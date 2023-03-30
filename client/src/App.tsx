@@ -1,12 +1,16 @@
-import * as mods from './mods/index'; // clear import and syntax
+import * as components from './components/_main.js'; // clear import and syntax
 
 function App() {
   return (
+    
     <div className='min-h-screen'>
-      <div className='gradient-bg-welcome'>
-        <mods.Navbar />
-        <mods.Welcome />
-      </div>
+      <main>
+        <components.Navbar />
+        <components.Hero />
+      </main>
+      <components.Services />
+      <components.Transactions />
+      <components.Footer />
     </div>
   )
 }

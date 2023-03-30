@@ -1,8 +1,13 @@
+import * as mods from './mods/index'; // clear import and syntax
+
 function App() {
   return (
-    <h1 className="text-3xl font-bol">
-      Hello world!
-    </h1>
+    <div className='min-h-screen'>
+      <div className='gradient-bg-welcome'>
+        <mods.Navbar />
+        <mods.Welcome />
+      </div>
+    </div>
   )
 }
 

@@ -1,4 +1,4 @@
-import * as components from './components/_main.js'; // clear import and syntax
+import * as components from './components/Components.js'; // clear import and syntax
 
 function App() {
   return (

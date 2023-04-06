@@ -1,0 +1,27 @@
+div.spinner,
+div.spinner-inner {
+    --size: 30vmin;
+    --width: 0.5vmin;
+    width: calc(var(--size) / 2);
+    height: calc(var(--size) / 2);
+    margin: 5vmin;
+    border-radius: 50%;
+    border-top: 6px solid #2546bd;
+    border-left: 6px solid transparent;
+    border-bottom: 6px solid #2546bd;
+    border-right: 6px solid transparent;
+    animation: 1.3s infinite linear rotateMe;
+}
+
+@keyframes rotateMe {
+    0% {
+        transform: rotate(0);
+    }
+    /* 50% {
+        width: calc(var(--size) / 2);
+        height: calc(var(--size) / 2);
+    } */
+    100% {
+        /* transform: rotate(360deg); */
+    }
+}

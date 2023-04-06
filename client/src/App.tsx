@@ -2,7 +2,6 @@ import * as components from './components/Components.js'; // clear import and sy
 
 function App() {
   return (
-    
     <div className='min-h-screen'>
       <main>
         <components.Navbar />

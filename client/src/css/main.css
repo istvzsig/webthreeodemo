@@ -1,5 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600&display=swap');
+
 @import '_variables.css';
+@import 'loader.css';
 
 @tailwind base;
 @tailwind components;
@@ -13,12 +15,10 @@
 
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Kanit', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-#root {
-  background: -webkit-radial-gradient(to right, var(--dark1), var(--dark2));
-  background: radial-gradient(to right, var(--dark1), var(--dark2));
+  /* delete */
+  background: #222;
+  color: white;
 }

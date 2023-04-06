@@ -2,6 +2,8 @@
 
 @import '_variables.css';
 @import 'loader.css';
+@import 'democard.css';
+
 
 @tailwind base;
 @tailwind components;
@@ -11,7 +13,12 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  outline: none !important;
+  box-shadow: none;
+  text-shadow: none;
 }
+
+input { background: #1a1a1a; }
 
 body {
   margin: 0;

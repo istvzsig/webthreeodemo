@@ -1,9 +1,8 @@
-import {BsShieldFillCheck} from 'react-icons/bs';
-import {BiSearchAlt} from 'react-icons/bi';
-import {RiHeart2Fill} from 'react-icons/ri';
+import {BsShieldFillCheck, BsCurrencyExchange} from 'react-icons/bs';
+import {SiExpertsexchange} from 'react-icons/si';
 
 export const serviceIcons = {
-    sec: <BsShieldFillCheck fontSize={55} color={"red"} />,
-    exc: <BiSearchAlt fontSize={55} color={"white"}/>,
-    trans: <RiHeart2Fill fontSize={55} color={"red"}/>
+    sec: <BsShieldFillCheck fontSize={55} color={"#2546bd"} />,
+    exc: <BsCurrencyExchange fontSize={55} color={"#2546bd"}/>,
+    trans: <SiExpertsexchange fontSize={55} color={"#2546bd"}/>
 }

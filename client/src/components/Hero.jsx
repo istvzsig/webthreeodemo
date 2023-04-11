@@ -1,14 +1,9 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import Form from './Form';
-import {TransactionContext} from '../context/TransactionContext';
+import { TransactionContext } from '../context/TransactionContext';
 
 export default function Hero() {
-    const {value} = useContext(TransactionContext);
-
-    function connectWallet() {}
-
-    function handleSubmit() {}
-
+    const accountContext = useContext(TransactionContext)
     return (
         <section className="flex md:flex-row flex-col md:justify-evenly">
             <div className="md:max-w-[420px] max-w-full">

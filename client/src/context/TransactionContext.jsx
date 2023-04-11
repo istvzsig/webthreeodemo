@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
-import {ethers} from 'ethers';
-
-import { contractAbi, contractAddress } from "../../../smart_contract/utils/constants";
+import * as Wallet from '../components/Wallet';
+import { handleChange } from "../components/Handlers";
 
 export const TransactionContext = React.createContext();
 
-const { ethereum } = window;
+export function TransactionProvider({children}) { 
+    const [currentAccount, setCurrentAccount] = useState('')
+    const [formData, setFormData] = useState({addressTo:'', amount:'', keyword:'', message:''})
 
-function getEthereumContract() {
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const signer = provider.getSigner();
-    const transactionContract = new ethers.Contract(contractAbi, contractAddress, signer);
-    console.log({provider, signer, transactionContract});
-}
-
-export function TransactionProvider({children}) {
+    useEffect(() => {Wallet.checkConnectedWallet()}, []);
     return (
-        <TransactionContext.Provider value={{}}>
+        <TransactionContext.Provider value={{connectWallet: Wallet.connectWallet, currentAccount, formData, setFormData, handleChange}}>
             {children}
         </TransactionContext.Provider>
     )

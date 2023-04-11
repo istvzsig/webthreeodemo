@@ -1,8 +1,11 @@
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
+require('@nomiclabs/hardhat-waffle');
 
-const config: HardhatUserConfig = {
-  solidity: "0.8.18",
-};
-
-export default config;
+module.exports = {
+  solidity: '0.8.0',
+  networks: {
+    localhost: {
+      url: 'http://localhost:8545',
+      accounts: ['0x36411CE1554895d7d858a2594Cb6E28E9C575070'],
+    }
+  }
+}

@@ -5,8 +5,9 @@ const config: HardhatUserConfig = {
   solidity: '0.8.0',
   networks: {
     localhost: {
-      url: 'http://localhost:8545',
-      accounts: ['0xf395ec4903f9592c33bc9c5002761e5dd5c78b7a41297f594f6c2e9fce8509e0'],
+      url: "http://127.0.0.1:8545",
+      // replace this with your own test address
+      accounts: ['a425b0749cfd5b240a4d8fc7dfb4fd3e7e3e00ad1b0d5ba709f459cd3205bde8'],
     }
   }
 }

@@ -1,3 +1,5 @@
+import { handleChange } from "./Handlers";
+
 export default function Input(props) {
     return (
         <input

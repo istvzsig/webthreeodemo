@@ -4,11 +4,7 @@ import "@nomicfoundation/hardhat-toolbox";
 const config: HardhatUserConfig = {
   solidity: '0.8.0',
   networks: {
-    localhost: {
-      url: "http://127.0.0.1:8545",
-      // replace this with your own test private key
-      accounts: [],
-    }
+    localhost: {url: "http://127.0.0.1:8545"}
   }
 }
 

@@ -1,14 +1,15 @@
-import {sendTransaction} from "./Wallet";
+
+import { ethers } from "ethers";
 
 export function handleChange(e, name, setFormData) {
     e.preventDefault();
     setFormData((prevState) => ({...prevState, [name]: e.target.value}));
 }
 
-export function handleSubmit(e) {
-    const {addressTo, amount, keyword, message} = context.formData;
+export function handleSubmit(e, context) {
     e.preventDefault();
-    if(!addressTo || !amount || !keyword || !message) return;
-    sendTransaction();
-    console.log('transaction sent...');
+    if(!ethers.isAddress(context.formData.addressTo) || !context.formData.amount || !context.formData.keyword || !context.formData.message) {
+        return; // add notification here
+    };
+    context.sendTransaction(context);
 }

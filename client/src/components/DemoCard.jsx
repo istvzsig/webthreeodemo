@@ -15,8 +15,8 @@ export default function DemoCard(currentAccount) {
                         
                     {
                         !context.currentAccount ? 
-                            sampleHash.slice(0,6) + '...' + sampleHash.slice(sampleHash.length-6)
-                        : context.currentAccount.slice(0,6) + '...' + context.currentAccount.slice(context.currentAccount.length-6)
+                            sampleHash.slice(0,6) + '...' + sampleHash.slice(sampleHash.length-4)
+                        : context.currentAccount.slice(0,6) + '...' + context.currentAccount.slice(context.currentAccount.length-4)
                     }
                     </p>
                     <h2 className="font-[400] text-lg">Ethereum</h2>

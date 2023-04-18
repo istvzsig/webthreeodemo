@@ -1,7 +1,6 @@
-import React, {useContext} from 'react';
 import {ethers} from 'ethers';
+import { parseEther, parseUnits, hexlify } from 'ethers';
 import {contractAbi, contractAddress} from "../../../smart_contract/utils/constants";
-import { TransactionContext } from '../context/TransactionContext';
 
 async function setAccount(method, setCurrentAccount) {
     try {
@@ -17,16 +16,28 @@ async function setAccount(method, setCurrentAccount) {
 }
 
 function getEthereumContract() {
-    const provider = new ethers.providers.Web3Provider(ethereum);
+    const provider = new ethers.BrowserProvider(ethereum);
     const signer = provider.getSigner();
-    const transactionContract = new ethers.Contract(contractAbi, contractAddress, signer);
-    console.log({provider, signer, transactionContract});
+    const transactionContract = new ethers.Contract(contractAddress, contractAbi, signer);
+    
+    return transactionContract;
 }
 
-async function sendTransaction() {
+async function sendTransaction(context) {
     try {
-        if(!ethereum) return
-        // get the data from the form
+        const transactionContract = getEthereumContract();
+        const parsedAmount = parseEther(context.formData.amount);
+        console.log(typeof parsedAmount)
+        await ethereum.request({
+            method: 'eth_sendTransaction',
+            params: [{
+                from: context.currentAccount,
+                to: context.formData.addressTo,
+                gas: '0x5208', // 21000 GWEI
+                value: '0x99999999',
+                
+            }]
+        })
     }
     catch(error) {console.error(error)}
 }
@@ -35,15 +46,13 @@ async function checkConnectedWallet(setCurrentAccount) {
     await setAccount('eth_accounts', setCurrentAccount);
 }       
 
-async function connectWallet(currentAccount, setCurrentAccount, setNotification) {
+async function connectWallet(setCurrentAccount) {
     await setAccount('eth_requestAccounts', setCurrentAccount);
     console.log('Connected...');
-    console.log(currentAccount);
-
 }
 
-async function disconnetWallet(setCurrentAccount) {
-    await setCurrentAccount('');
+async function disconnetWallet() {
+    await setAccount('', null);
     // await window.location.reload(); // just to make sure
 }
 

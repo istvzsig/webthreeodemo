@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {TransactionContext} from "../context/TransactionContext";
-import {ConnectWalletButton, DisconnectWalletButton} from "./Buttons";
+import {ConnectWalletButton, DisconnectWalletButton, AccountButton} from "./Buttons";
 
 
 export default function Navbar() {
@@ -19,7 +19,8 @@ export default function Navbar() {
                         {item}
                     </div>)
             }
-            {!context.currentAccount ? <ConnectWalletButton /> : <DisconnectWalletButton />}
+            {!context.currentAccount ? <ConnectWalletButton /> : <AccountButton />}
+
             </ul>
         </nav>
     )

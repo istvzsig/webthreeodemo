@@ -1,15 +1,14 @@
-import { sendTransaction } from "./Wallet";
+import {sendTransaction} from "./Wallet";
 
-export function handleChange(e, name) {
+export function handleChange(e, name, setFormData) {
     e.preventDefault();
     setFormData((prevState) => ({...prevState, [name]: e.target.value}));
-    console.log('value changed')
 }
 
 export function handleSubmit(e) {
+    const {addressTo, amount, keyword, message} = context.formData;
     e.preventDefault();
-    const transactionContext = useContext(TransactionContext);
-    const {addressTo, amount, keyword, message} = transactionContext.formData;
     if(!addressTo || !amount || !keyword || !message) return;
     sendTransaction();
+    console.log('transaction sent...');
 }

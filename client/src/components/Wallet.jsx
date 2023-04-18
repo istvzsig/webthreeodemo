@@ -6,12 +6,13 @@ import { TransactionContext } from '../context/TransactionContext';
 async function setAccount(method, setCurrentAccount) {
     try {
         if(!ethereum) return;
-        const accounts = await ethereum.request({method: method})
+        const accounts = await ethereum.request({method: method});
         setCurrentAccount(accounts[0]);
     }
     catch(error) {
         console.error(error);
         throw new Error('No Etherium Object');
+        
     }
 }
 
@@ -32,16 +33,18 @@ async function sendTransaction() {
 
 async function checkConnectedWallet(setCurrentAccount) {
     await setAccount('eth_accounts', setCurrentAccount);
-}
+}       
 
-async function connectWallet(setCurrentAccount) {
+async function connectWallet(currentAccount, setCurrentAccount, setNotification) {
     await setAccount('eth_requestAccounts', setCurrentAccount);
-    // window.location.reload(); // just to make sure
+    console.log('Connected...');
+    console.log(currentAccount);
+
 }
 
 async function disconnetWallet(setCurrentAccount) {
-    setCurrentAccount('');
-    console.log('disconnected...');
+    await setCurrentAccount('');
+    // await window.location.reload(); // just to make sure
 }
 
 export {

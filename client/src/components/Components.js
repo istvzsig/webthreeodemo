@@ -5,5 +5,6 @@ import Services from './Services/Services';
 import Transactions from './Transactions';
 import Hero from './Hero';
 import Form from './Form';
+import Notification from './Notification';
 
-export {Footer, Loader, Navbar, Services, Transactions, Hero, Form}
+export {Footer, Loader, Navbar, Services, Transactions, Hero, Form, Notification}

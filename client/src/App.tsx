@@ -4,6 +4,7 @@ function App() {
   return (
     <div className='min-h-screen'>
       <main>
+        {/* <components.Notification /> */}
         <components.Navbar />
         <components.Hero />
       </main>

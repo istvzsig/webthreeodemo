@@ -22,11 +22,3 @@ export function SendTransactionButton() {
         <button type="submit" className="text-xl capitalize my-[.5rem] py-[.7rem] w-full bg-[#ffa555] rounded-full" onClick={e => handleSubmit(e, context)}>Send</button>
     )
 }
-
-export function AccountButton() {
-    const context = useContext(TransactionContext);
-    return (
-        <h2 className="self-center text-xl capitalize bg-[#2546bd] rounded-full p-4 px-6 cursor-none">Account: {context.currentAccount.slice(0,6) +'...'+context.currentAccount.slice(-4)}</h2>
-    )
-}
-

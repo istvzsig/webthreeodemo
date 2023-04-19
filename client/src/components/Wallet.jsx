@@ -1,4 +1,4 @@
-import {ethers, parseEther, formatEther, formatUnits, hexlify} from 'ethers';
+import {ethers, parseEther, formatEther} from 'ethers';
 import {contractAbi, contractAddress} from "../../../smart_contract/utils/constants";
 
 async function setAccount(method, setCurrentAccount) {
@@ -25,16 +25,13 @@ function getEthereumContract() {
 async function sendTransaction(context) {
     try {
         const transactionContract = getEthereumContract();
-        let wei = parseEther(context.formData.amount);
-        // console.log();
-
         await ethereum.request({
             method: 'eth_sendTransaction',
             params: [{
                 from: context.currentAccount,
                 to: context.formData.addressTo,
                 gas: '0x5208', // 21000 GWEI
-                value: '0x' + wei.toString(16),
+                value: '0x' + parseEther(context.formData.amount).toString(16),
             }]
         })
     }
@@ -47,7 +44,6 @@ async function checkConnectedWallet(setCurrentAccount) {
 
 async function connectWallet(setCurrentAccount) {
     await setAccount('eth_requestAccounts', setCurrentAccount);
-    console.log('Connected...');
 }
 
 async function disconnetWallet() {
@@ -55,10 +51,21 @@ async function disconnetWallet() {
     // await window.location.reload(); // just to make sure
 }
 
+// balance
+async function getCurrentWalletBalance(currentAccount, setBalance) {
+    try {
+        const provider = new ethers.JsonRpcProvider('http://localhost:5555');
+        const balance =  await provider.getBalance(currentAccount);
+        setBalance(`ETH: ${formatEther(balance).toString()}`);
+    }
+    catch(error) {console.log(error)}
+}
+
 export {
     checkConnectedWallet,
     connectWallet,
     disconnetWallet,
+    getCurrentWalletBalance,
     getEthereumContract,
     sendTransaction,
 }

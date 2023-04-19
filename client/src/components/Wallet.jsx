@@ -1,5 +1,4 @@
-import {ethers} from 'ethers';
-import { parseEther, parseUnits, hexlify } from 'ethers';
+import {ethers, parseEther, formatEther, formatUnits, hexlify} from 'ethers';
 import {contractAbi, contractAddress} from "../../../smart_contract/utils/constants";
 
 async function setAccount(method, setCurrentAccount) {
@@ -16,7 +15,7 @@ async function setAccount(method, setCurrentAccount) {
 }
 
 function getEthereumContract() {
-    const provider = new ethers.BrowserProvider(ethereum);
+    const provider = new ethers.JsonRpcProvider('http://localhost:5555');
     const signer = provider.getSigner();
     const transactionContract = new ethers.Contract(contractAddress, contractAbi, signer);
     
@@ -26,16 +25,16 @@ function getEthereumContract() {
 async function sendTransaction(context) {
     try {
         const transactionContract = getEthereumContract();
-        const parsedAmount = parseEther(context.formData.amount);
-        console.log(typeof parsedAmount)
+        let wei = parseEther(context.formData.amount);
+        // console.log();
+
         await ethereum.request({
             method: 'eth_sendTransaction',
             params: [{
                 from: context.currentAccount,
                 to: context.formData.addressTo,
                 gas: '0x5208', // 21000 GWEI
-                value: '0x99999999',
-                
+                value: '0x' + wei.toString(16),
             }]
         })
     }

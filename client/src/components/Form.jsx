@@ -15,7 +15,7 @@ export default function Form() {
             <form action='/' className="flex flex-col self-center sm:w-72 w-full">
                 {
                     inputs.map((input, index) =>
-                    <Input step={0.0001} type={names[index] == 'amount' ? 'number' : 'text'} key={index} placeholder={input} name={names[index]} handleChange={e => handleChange(e, names[index], cntext.setFormdata)}/>
+                    <Input type={names[index] == 'amount' ? 'number' : 'text'} key={index} placeholder={input} name={names[index]} handleChange={e => handleChange(e, names[index], context.setFormdata)}/>
                     )
                 }
                 <SendTransactionButton />

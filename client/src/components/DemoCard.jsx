@@ -7,7 +7,7 @@ export default function DemoCard(currentAccount) {
     const context = useContext(TransactionContext);
 
     return (
-        <div className="p-3 justify-end item-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white self-center">
+        <div className="p-3 justify-end item-start flex-col rounded-xl h-40 w-full my-5 eth-card white self-center max-w-[288px]">
             <div className="flex flex-col h-full justify-between">
                 <img src={ETHLlogo} alt="ETH-logo" className="max-w-[33px]"/>
                 <div>
